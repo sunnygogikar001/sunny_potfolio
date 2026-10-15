@@ -2,358 +2,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Gogikar | Developer Portfolio</title>
-<meta name="description" content="Sunny Gogikar's software development portfolio, projects, internships and skills.">
-
-<style>
-:root {
-  --bg: #080d19;
-  --card: #111b2d;
-  --blue: #60a5fa;
-  --purple: #8b5cf6;
-  --green: #73e0c1;
-  --text: #f3f6ff;
-  --muted: #a6b2c8;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-}
-a { color: inherit; text-decoration: none; }
-.container { width: min(1100px, 90%); margin: auto; }
-header {
-  position: sticky; top: 0; z-index: 10;
-  background: rgba(8,13,25,.95);
-  border-bottom: 1px solid #243047;
-  backdrop-filter: blur(12px);
-}
-nav {
-  min-height: 70px; display: flex;
-  justify-content: space-between; align-items: center;
-  gap: 20px; flex-wrap: wrap;
-}
-.logo { font-size: 21px; font-weight: 800; }
-.logo span, h1 span, h2 span { color: var(--blue); }
-.navlinks { display: flex; gap: 20px; flex-wrap: wrap; }
-.navlinks a { color: var(--muted); font-size: 14px; }
-.navlinks a:hover { color: var(--green); }
-.hero {
-  min-height: 570px; display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  align-items: center; gap: 35px; padding-top: 60px;
-  padding-bottom: 60px;
-}
-.eyebrow { color: var(--green); letter-spacing: 2px; font-size: 12px; }
-h1 { font-size: clamp(42px,6vw,70px); line-height: 1.1; margin: 15px 0; }
-h2 { font-size: clamp(28px,4vw,40px); line-height: 1.2; }
-h3 { line-height: 1.35; }
-.hero p, .muted { color: var(--muted); }
-.buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
-.btn {
-  display: inline-block; padding: 11px 17px;
-  border-radius: 9px; background: linear-gradient(120deg,var(--blue),var(--purple));
-  color: white; font-weight: bold; font-size: 14px;
-}
-.btn.outline { background: transparent; border: 1px solid #465773; }
-.btn:hover { opacity: .85; transform: translateY(-2px); }
-.avatar {
-  min-height: 320px; border: 1px solid #2c4264;
-  border-radius: 24px; display: grid; place-items: center;
-  text-align: center; padding: 25px;
-  background: radial-gradient(circle at 50% 35%,#244d83,#111b30 55%,#0b1120);
-  box-shadow: 0 20px 70px #0006;
-}
-.avatar-face { font-size: 110px; filter: drop-shadow(0 0 25px #60a5fa55); }
-.avatar p { margin: 0; }
-section { padding: 65px 0; }
-.section-intro { color: var(--muted); max-width: 650px; }
-.grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
-.card {
-  background: var(--card); border: 1px solid #26344d;
-  border-radius: 15px; overflow: hidden; padding: 22px;
-  transition: transform .2s,border-color .2s;
-}
-.card:hover { transform: translateY(-4px); border-color: var(--blue); }
-.project-image {
-  width: 100%; height: 185px; object-fit: cover;
-  border-radius: 10px; background: #17243a;
-}
-.project-icon {
-  height: 150px; display: grid; place-items: center;
-  font-size: 60px; border-radius: 10px;
-  background: linear-gradient(135deg,#172e4b,#342454);
-}
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
-.tags span {
-  color: #b9d7ff; background: #20334d;
-  border-radius: 6px; padding: 4px 9px; font-size: 12px;
-}
-.card p { color: var(--muted); }
-.card-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-.card-links a { color: var(--green); font-size: 13px; }
-.skill-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-.skill { text-align: center; padding: 20px 10px; }
-.skill b { display: block; margin-bottom: 5px; }
-.skill span { color: var(--muted); font-size: 13px; }
-.timeline { border-left: 2px solid #304360; padding-left: 25px; }
-.timeline .card { margin-bottom: 17px; }
-.date { color: var(--green); font-size: 12px; }
-.resume-box {
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 20px;
-  background: linear-gradient(120deg,#14243c,#20183d);
-  border: 1px solid #304360; border-radius: 16px; padding: 28px;
-}
-.certificate { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
-.certificate + .certificate { border-top: 1px solid #2c3b52; padding-top: 16px; margin-top: 16px; }
-.certificate h3 { font-size: 15px; margin: 0; }
-.certificate p { font-size: 12px; color: var(--muted); margin: 4px 0; }
-footer { border-top: 1px solid #243047; padding: 25px 0; color: var(--muted); }
-footer .container { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-@media(max-width:720px) {
-  .hero { grid-template-columns: 1fr; padding-top: 35px; }
-  .avatar { min-height: 250px; }
-  .grid { grid-template-columns: 1fr; }
-  .skill-grid { grid-template-columns: repeat(2,1fr); }
-  .navlinks { gap: 12px; padding-bottom: 12px; }
-  .navlinks a { font-size: 12px; }
-  section { padding: 45px 0; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sunny Gogikar's developer portfolio showcasing projects, skills, internships, education, and certifications.">
+  <title>Sunny Gogikar | Developer Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-<header>
-  <nav class="container">
-    <a href="#home" class="logo">SG<span>.</span> Sunny Gogikar</a>
-    <div class="navlinks">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-</header>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a class="logo" href="#home">Sunny<span>.</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="navlinks" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Internships</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact" class="nav-contact">Contact me ↗</a>
+      </div>
+    </nav>
+  </header>
 
-<main>
-<section class="container hero" id="home">
-  <div>
-    <p class="eyebrow">COMPUTER SCIENCE GRADUATE · 2025</p>
-    <h1>Hi, I'm<br><span>Sunny Gogikar</span></h1>
-    <h3>Software Developer | Python Full Stack</h3>
-    <p>I enjoy building practical web applications and exploring data-driven solutions using Python, web technologies, and machine learning.</p>
-    <div class="buttons">
-      <a class="btn" href="#projects">View My Projects ↘</a>
-      <a class="btn outline" href="https://drive.google.com/file/d/1bxbC0DomuxJaKfsNCpXa7Y9SGth-F-9-/view?usp=sharing" target="_blank" rel="noopener">View Resume ↗</a>
-    </div>
-    <div class="buttons">
-      <a class="btn outline" href="https://github.com/sunnygogikar001" target="_blank" rel="noopener">GitHub ↗</a>
-      <a class="btn outline" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a>
-    </div>
-  </div>
-  <div class="avatar">
-    <div>
-      <div class="avatar-face" role="img" aria-label="Developer avatar">👨🏻‍💻</div>
-      <h2>Turning ideas into <span>solutions.</span></h2>
-      <p>Python · Web Development · Machine Learning</p>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-    <p class="eyebrow">01 / ABOUT ME</p>
-    <h2>About <span>Me</span></h2>
-    <p class="section-intro">I'm a Computer Science and Engineering graduate from Balaji Institute of Technology and Science, graduated in 2025. My academic projects and internships helped me develop foundational skills in Python, full-stack development, front-end technologies, and machine learning. I'm eager to contribute to software projects and continue growing as a developer.</p>
-    <div class="grid">
-      <div class="card"><h3>🎓 Education</h3><p>B.Tech in Computer Science and Engineering</p><p>Balaji Institute of Technology and Science</p><p>CGPA: 7.59</p></div>
-      <div class="card"><h3>🎯 Career Goal</h3><p>Seeking opportunities in software development, Python development, and web development where I can learn, collaborate, and build useful products.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="container">
-    <p class="eyebrow">02 / TOOLKIT</p>
-    <h2>Technical <span>Skills</span></h2>
-    <div class="skill-grid">
-      <div class="card skill"><b>🐍 Python</b><span>Programming</span></div>
-      <div class="card skill"><b>☕ Java</b><span>Programming</span></div>
-      <div class="card skill"><b>🌐 HTML & CSS</b><span>Web development</span></div>
-      <div class="card skill"><b>⚛️ React</b><span>Frontend</span></div>
-      <div class="card skill"><b>🧩 Django</b><span>Backend</span></div>
-      <div class="card skill"><b>🗄️ SQL</b><span>Databases</span></div>
-      <div class="card skill"><b>📈 Machine Learning</b><span>Regression models</span></div>
-      <div class="card skill"><b>📊 Power BI</b><span>Data visualization</span></div>
-      <div class="card skill"><b>🔐 Networking</b><span>Security fundamentals</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="container">
-    <p class="eyebrow">03 / SELECTED WORK</p>
-    <h2>Featured <span>Projects</span></h2>
-    <p class="section-intro">Explore my academic and practice projects. Replace placeholder repository links with your actual project URLs.</p>
-    <div class="grid">
-
-      <article class="card">
-        <img class="project-image" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Data analytics dashboard with charts">
-        <h3>Dashboard using Power BI</h3>
-        <p>Power BI dashboard for wind speed data visualization and analysis.</p>
-        <div class="tags"><span>Power BI</span><span>Data Analytics</span><span>Visualization</span></div>
-        <div class="card-links">
-          <a href="https://github.com/sunnygogikar001/Dash-Board/blob/main/WIND%20SPEED%20PREDCTION.pbix" target="_blank" rel="noopener">View Power BI file ↗</a>
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-content reveal">
+        <p class="eyebrow"><span class="status-dot"></span> COMPUTER SCIENCE GRADUATE</p>
+        <h1>Hi, I'm <span class="gradient-text">Sunny Gogikar.</span></h1>
+        <h2>Developer · Problem Solver · Tech Enthusiast</h2>
+        <p class="hero-description">
+          I’m a Computer Science graduate interested in building useful web applications,
+          exploring Python development, and turning ideas and data into practical solutions.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Explore my work <span>↗</span></a>
+          <a class="button button-secondary" href="#contact">Get in touch</a>
         </div>
-      </article>
-
-      <article class="card">
-        <img class="project-image" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="Online shopping and e-commerce">
-        <h3>E-commerce Platform</h3>
-        <p>A full-stack e-commerce project concept using Python and Django with a web interface and backend application structure.</p>
-        <div class="tags"><span>Python</span><span>Django</span><span>HTML/CSS</span></div>
-        <div class="card-links"><a href="https://github.com/sunnygogikar001" target="_blank" rel="noopener">Find project on GitHub ↗</a></div>
-      </article>
-
-      <article class="card">
-        <img class="project-image" src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&w=900&q=80" alt="Messaging application on a phone">
-        <h3>Real-Time Chat Application</h3>
-        <p>Explored real-time messaging and interactive communication using Django Channels.</p>
-        <div class="tags"><span>Python</span><span>Django Channels</span><span>Web</span></div>
-        <div class="card-links"><a href="https://github.com/sunnygogikar001" target="_blank" rel="noopener">Find project on GitHub ↗</a></div>
-      </article>
-
-      <article class="card">
-        <img class="project-image" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="Healthcare professional reviewing digital information">
-        <h3>Healthcare Dashboard</h3>
-        <p>A React-based static healthcare dashboard interface focused on readable data presentation and reusable UI components.</p>
-        <div class="tags"><span>React</span><span>JavaScript</span><span>UI</span></div>
-        <div class="card-links"><a href="https://github.com/sunnygogikar001" target="_blank" rel="noopener">Find project on GitHub ↗</a></div>
-      </article>
-
-      <article class="card">
-        <img class="project-image" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80" alt="Cybersecurity technology visual">
-        <h3>Packet Hiding Methods</h3>
-        <p>Academic major project exploring packet-hiding methods related to selective jamming techniques in network communication.</p>
-        <div class="tags"><span>Networking</span><span>Security</span><span>Academic Project</span></div>
-        <div class="card-links"><a href="https://github.com/sunnygogikar001" target="_blank" rel="noopener">Find project on GitHub ↗</a></div>
-      </article>
-
-      <article class="card">
-        <div class="project-icon">📉</div>
-        <h3>Wind Speed Prediction — Machine Learning</h3>
-        <p>Regression-based academic work using Linear Regression, Ridge Regression, and Lasso Regression with data preprocessing and model evaluation.</p>
-        <div class="tags"><span>Python</span><span>Regression</span><span>MSE / R²</span></div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="container">
-    <p class="eyebrow">04 / EXPERIENCE</p>
-    <h2>Internship <span>Experience</span></h2>
-    <div class="timeline">
-      <article class="card">
-        <span class="date">JAN – MAR 2025</span>
-        <h3>Python Full Stack Development Intern</h3>
-        <p>Edunet Academy · AICTE collaboration</p>
-        <p class="muted">Developed foundational knowledge of Python-based application development and full-stack concepts.</p>
-      </article>
-      <article class="card">
-        <span class="date">JUN – JUL 2024</span>
-        <h3>Front-End Development Intern</h3>
-        <p>IBM SkillsBuild · AICTE and Edunet Foundation</p>
-        <p class="muted">Completed a six-week internship focused on front-end development fundamentals and web interfaces.</p>
-      </article>
-      <article class="card">
-        <span class="date">DEC 2023 – JAN 2024</span>
-        <h3>Full Stack Web Development Intern</h3>
-        <p>EY Global Delivery Services · AICTE collaboration</p>
-        <p class="muted">Completed a six-week internship focused on full-stack web development concepts.</p>
-      </article>
-      <article class="card">
-        <span class="date">JAN 2024</span>
-        <h3>Web Development and Hosting Intern</h3>
-        <p>Gauravgo Games Technologies Pvt. Ltd.</p>
-        <p class="muted">Gained exposure to web development and website hosting concepts.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="certificates">
-  <div class="container">
-    <p class="eyebrow">05 / CERTIFICATES</p>
-    <h2>Internship <span>Certificates</span></h2>
-    <div class="card">
-      <div class="certificate">
-        <div><h3>Python Full Stack Development</h3><p>Edunet Academy</p></div>
-        <a class="btn" href="https://drive.google.com/file/d/1EP6HM611k_MyDy4sklmPd1is4wr12Iio/view?usp=sharing" target="_blank" rel="noopener">View ↗</a>
+        <div class="social-links">
+          <a href="https://github.com/sunnygogikar001" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="mailto:sannygogikar@gmail.com">Email ↗</a>
+          <a href="https://drive.google.com/file/d/1bxbC0DomuxJaKfsNCpXa7Y9SGth-F9-/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+        </div>
       </div>
-      <div class="certificate">
-        <div><h3>Front-End Development</h3><p>IBM SkillsBuild</p></div>
-        <a class="btn" href="https://drive.google.com/file/d/1P7T6eaAvhxHh-rfjZQP015HVEokwkqSU/view?usp=sharing" target="_blank" rel="noopener">View ↗</a>
+
+      <div class="hero-visual reveal">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="profile-card">
+          <div class="avatar" aria-label="Developer avatar">👨🏻‍💻</div>
+          <p class="profile-greeting">HELLO, WORLD!</p>
+          <h3>Building. Learning. Growing.</h3>
+          <p class="profile-location">📍 Telangana, India</p>
+          <div class="profile-tags">
+            <span>Python</span><span>Web Development</span><span>Problem Solving</span>
+          </div>
+        </div>
+        <span class="floating-badge badge-code">&lt;/&gt; Code</span>
+        <span class="floating-badge badge-python">Python</span>
       </div>
-      <div class="certificate">
-        <div><h3>Full Stack Web Development</h3><p>EY Global Delivery Services</p></div>
-        <a class="btn" href="https://drive.google.com/file/d/1824Q58dbw5RbP1IqE3yDBoIAqwUMl7l3/view?usp=sharing" target="_blank" rel="noopener">View ↗</a>
+    </section>
+
+    <section class="section container" id="about">
+      <div class="section-heading reveal">
+        <p class="eyebrow">A LITTLE ABOUT ME</p>
+        <h2>Curious mind. <span class="gradient-text">Practical builder.</span></h2>
       </div>
-      <div class="certificate">
-        <div><h3>Web Development and Hosting</h3><p>Gauravgo Games Technologies</p></div>
-        <a class="btn" href="https://drive.google.com/file/d/1auWzITHp0AQCOO7e3m34LGOnQaBBB7DL/view?usp=sharing" target="_blank" rel="noopener">View ↗</a>
+      <div class="about-layout">
+        <div class="about-copy reveal">
+          <p>
+            I’m a B.Tech Computer Science and Engineering graduate from Balaji Institute
+            of Technology and Science. I enjoy learning technologies, developing web
+            applications, and solving problems through code.
+          </p>
+          <p>
+            My learning experience includes Python full-stack development, front-end
+            development, Django, React, SQL, machine learning fundamentals, and networking.
+            I’m looking forward to opportunities where I can contribute, learn from a team,
+            and grow as a software professional.
+          </p>
+          <a class="text-link" href="https://github.com/sunnygogikar001" target="_blank" rel="noopener noreferrer">Explore my GitHub profile ↗</a>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat-card"><strong>2025</strong><span>B.Tech Graduate</span></div>
+          <div class="stat-card"><strong>7.59</strong><span>B.Tech CGPA</span></div>
+          <div class="stat-card"><strong>Python</strong><span>Development focus</span></div>
+          <div class="stat-card"><strong>6+</strong><span>Cisco certifications</span></div>
+        </div>
       </div>
+    </section>
+
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">WHAT I WORK WITH</p>
+          <h2>My <span class="gradient-text">technical toolkit</span></h2>
+          <p class="section-description">Technologies and concepts I have studied or used in projects and training.</p>
+        </div>
+        <div class="skill-grid">
+          <article class="skill-card reveal"><span class="skill-icon">🐍</span><h3>Programming</h3><p>Python, Java, JavaScript</p></article>
+          <article class="skill-card reveal"><span class="skill-icon">🌐</span><h3>Web Development</h3><p>HTML, CSS, React, Django</p></article>
+          <article class="skill-card reveal"><span class="skill-icon">🗄️</span><h3>Databases</h3><p>SQL, DBMS fundamentals</p></article>
+          <article class="skill-card reveal"><span class="skill-icon">🤖</span><h3>Machine Learning</h3><p>Linear, Ridge and Lasso Regression</p></article>
+          <article class="skill-card reveal"><span class="skill-icon">📊</span><h3>Data & Analytics</h3><p>Data preprocessing, analysis, Power BI</p></article>
+          <article class="skill-card reveal"><span class="skill-icon">🔐</span><h3>Networking & Security</h3><p>Networking fundamentals, cybersecurity</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="projects">
+      <div class="section-heading reveal">
+        <p class="eyebrow">SELECTED WORK</p>
+        <h2>Projects I've <span class="gradient-text">worked on</span></h2>
+        <p class="section-description">A selection of academic and development projects.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <img class="project-image" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=85" alt="Data analytics charts on a computer screen" loading="lazy">
+          <div class="project-body">
+            <span class="project-type">DATA ANALYTICS</span>
+            <h3>Dashboard using Power BI</h3>
+            <p>Wind speed prediction project data presented through a dashboard for clearer data exploration and visual analysis.</p>
+            <div class="tag-list"><span>Power BI</span><span>Data Visualization</span><span>Analytics</span></div>
+            <a class="text-link" href="https://github.com/sunnygogikar001/Dash-Board/blob/main/WIND%20SPEED%20PREDCTION.pbix" target="_blank" rel="noopener noreferrer">View project ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <img class="project-image" src="https://images.unsplash.com/photo-155594 as" alt="Code displayed on a computer screen" loading="lazy">
+          <div class="project-body">
+            <span class="project-type">MACHINE LEARNING</span>
+            <h3>Wind Speed Prediction</h3>
+            <p>Explored regression models to predict wind speed, including data preprocessing, missing-value handling, and model evaluation.</p>
+            <div class="tag-list"><span>Python</span><span>Linear Regression</span><span>Ridge</span><span>Lasso</span></div>
+            <a class="text-link" href="https://github.com/sunnygogikar001" target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <img class="project-image" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85" alt="Online shopping and e-commerce payment" loading="lazy">
+          <div class="project-body">
+            <span class="project-type">FULL-STACK DEVELOPMENT</span>
+            <h3>E-commerce Platform</h3>
+            <p>A web development project exploring the structure of an online shopping platform using Python and Django.</p>
+            <div class="tag-list"><span>Python</span><span>Django</span><span>HTML</span><span>CSS</span></div>
+            <a class="text-link" href="https://github.com/sunnygogikar001" target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <img class="project-image" src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1000&q=85" alt="Digital security concept" loading="lazy">
+          <div class="project-body">
+            <span class="project-type">CYBERSECURITY</span>
+            <h3>Packet Hiding Methods for Selective Jamming Techniques</h3>
+            <p>An academic project focused on packet-hiding methods and selective jamming techniques in network communication.</p>
+            <div class="tag-list"><span>Computer Networks</span><span>Security</span><span>Research</span></div>
+            <a class="text-link" href="https://github.com/sunnygogikar001" target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+          </div>
+        </article>
+      </div>
+      <p class="image-note">Project images are illustrative visuals, not screenshots of the actual applications.</p>
+    </section>
+
+    <section class="section section-alt" id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">LEARNING THROUGH EXPERIENCE</p>
+          <h2>Internships & <span class="gradient-text">training</span></h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">JAN 2025 – MAR 2025</span>
+              <h3>Python Full Stack Development</h3>
+              <p class="timeline-company">Edunet Academy · AICTE collaboration</p>
+              <p>Training in Python full-stack development concepts and web application fundamentals.</p>
+              <a class="text-link" href="https://drive.google.com/file/d/1EP6HM611k_MyDy4sklmPd1is4wr12Iio/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">JUN 2024 – JUL 2024</span>
+              <h3>Front-End Development</h3>
+              <p class="timeline-company">IBM SkillsBuild · AICTE and Edunet Foundation</p>
+              <p>Six-week internship focused on front-end development concepts and practical learning.</p>
+              <a class="text-link" href="https://drive.google.com/file/d/1P7T6eaAvhxHh-rfjZQP015HVEokwkqSU/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">DEC 2023 – JAN 2024</span>
+              <h3>Full Stack Web Development</h3>
+              <p class="timeline-company">EY Global Delivery Services · AICTE collaboration</p>
+              <p>Six-week internship through the Next Gen Employability Program 2023–24.</p>
+              <a class="text-link" href="https://drive.google.com/file/d/1824Q58dbw5RbP1IqE3yDBoIAqwUMl7l3/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">JAN 2024</span>
+              <h3>Web Development & Hosting Intern</h3>
+              <p class="timeline-company">Gauravgo Games Technologies Pvt. Ltd.</p>
+              <p>Practical exposure to web development and website hosting.</p>
+              <a class="text-link" href="https://drive.google.com/file/d/1auWzITHp0AQCOO7e3m34LGOnQaBBB7DL/view?usp=sharing" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="certifications">
+      <div class="section-heading reveal">
+        <p class="eyebrow">CONTINUOUS LEARNING</p>
+        <h2>Courses & <span class="gradient-text">certifications</span></h2>
+        <p class="section-description">Select a certificate to open it in Google Drive.</p>
+      </div>
+
+      <h3 class="cert-group-title">Cisco Networking Academy</h3>
+      <div class="cert-grid">
+        <article class="certificate reveal">
+          <span class="cert-icon">🌐</span>
+          <div><h3>Introduction to Data Science</h3><p>Cisco Networking Academy</p></div>
+          <a href="https://drive.google.com/file/d/1fKWvVXNSGIwhMjYqQDxV0wRScuX5eKgJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+        <article class="certificate reveal">
+          <span class="cert-icon">🛡️</span>
+          <div><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy</p></div>
+          <a href="https://drive.google.com/file/d/1IAjOGd-gqGU_f9hOl_z1utpqVOHOnSnM/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+        <article class="certificate reveal">
+          <span class="cert-icon">🔌</span>
+          <div><h3>CCNAv7: Introduction to Networks</h3><p>Cisco Networking Academy</p></div>
+          <a href="https://drive.google.com/file/d/1IiAqbHLZhxBQRGl6nmq_bkYU9tnRH97l/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+        <article class="certificate reveal">
+          <span class="cert-icon">📡</span>
+          <div><h3>CCNAv7: Switching, Routing and Wireless Essentials</h3><p>Cisco Networking Academy</p></div>
+          <a href="https://drive.google.com/file/d/1i7b4kMOFYNJ01vPBgdoaTFQRQYNWgmFh/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+        <article class="certificate reveal">
+          <span class="cert-icon">🔐</span>
+          <div><h3>CCNAv7: Enterprise Networking, Security, and Automation</h3><p>Cisco Networking Academy</p></div>
+          <a href="https://drive.google.com/file/d/1uTqeLLEMvVp25TJQJ9H7IXxqZoL0iyAz/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+        <article class="certificate reveal">
+          <span class="cert-icon">📈</span>
+          <div><h3>Introduction to Data Analytics</h3><p>Cisco Networking Academy</p></div>
+          <a href="https://drive.google.com/file/d/1CctSDXj9Bl6_2fMdpKvzWXI43ZzF5h1Y/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+      </div>
+
+      <h3 class="cert-group-title">Development Certifications</h3>
+      <div class="cert-grid">
+        <article class="certificate reveal">
+          <span class="cert-icon">🐍</span>
+          <div><h3>Python Full Stack Development</h3><p>Edunet Academy</p></div>
+          <a href="https://drive.google.com/file/d/1EP6HM611k_MyDy4sklmPd1is4wr12Iio/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+        <article class="certificate reveal">
+          <span class="cert-icon">💻</span>
+          <div><h3>Front-End Development</h3><p>IBM SkillsBuild</p></div>
+          <a href="https://drive.google.com/file/d/1P7T6eaAvhxHh-rfjZQP015HVEokwkqSU/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+        <article class="certificate reveal">
+          <span class="cert-icon">⚙️</span>
+          <div><h3>Full Stack Web Development</h3><p>EY Global Delivery Services internship</p></div>
+          <a href="https://drive.google.com/file/d/1824Q58dbw5RbP1IqE3yDBoIAqwUMl7l3/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+        <article class="certificate reveal">
+          <span class="cert-icon">🚀</span>
+          <div><h3>Web Development and Hosting</h3><p>Gauravgo Games Technologies Pvt. Ltd.</p></div>
+          <a href="https://drive.google.com/file/d/1auWzITHp0AQCOO7e3m34LGOnQaBBB7DL/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Certificate ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">MY ACADEMIC BACKGROUND</p>
+          <h2><span class="gradient-text">Education</span></h2>
+        </div>
+        <article class="education-card reveal">
+          <span class="education-icon">🎓</span>
+          <div>
+            <h3>Bachelor of Technology — Computer Science and Engineering</h3>
+            <p>Balaji Institute of Technology and Science · JNTUH</p>
+            <p class="education-meta">Graduated in 2025 · CGPA: 7.59 / 10</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="resume">
+      <div class="resume-box reveal">
+        <div>
+          <p class="eyebrow">WANT TO KNOW MORE?</p>
+          <h2>Take a look at my <span class="gradient-text">resume.</span></h2>
+          <p>Explore my academic background, skills, internships, and projects.</p>
+        </div>
+        <a class="button button-primary" href="https://drive.google.com/file/d/1bxbC0DomuxJaKfsNCpXa7Y9SGth-F9-/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Resume ↗</a>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-layout">
+        <div class="reveal">
+          <p class="eyebrow">LET'S CONNECT</p>
+          <h2>Have an opportunity?<br><span class="gradient-text">Let's talk.</span></h2>
+          <p class="contact-description">I'm open to connecting about entry-level software development opportunities, projects, and professional learning.</p>
+        </div>
+        <div class="contact-card reveal">
+          <p class="contact-label">EMAIL ME</p>
+          <a class="email-link" href="mailto:sannygogikar@gmail.com">sannygogikar@gmail.com ↗</a>
+          <div class="contact-divider"></div>
+          <p class="contact-label">GITHUB</p>
+          <a class="email-link" href="https://github.com/sunnygogikar001" target="_blank" rel="noopener noreferrer">github.com/sunnygogikar001 ↗</a>
+          <div class="contact-divider"></div>
+          <button class="button button-secondary copy-email" id="copyEmail" type="button">Copy email address</button>
+          <p class="copy-message" id="copyMessage" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <a class="logo" href="#home">Sunny<span>.</span></a>
+      <p>Designed and built with curiosity by Sunny Gogikar.</p>
+      <p>© <span id="year"></span> Sunny Gogikar</p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section id="resume">
-  <div class="container">
-    <div class="resume-box">
-      <div>
-        <p class="eyebrow">MY RESUME</p>
-        <h2>Interested in my <span>background?</span></h2>
-        <p class="muted">View my resume and experience.</p>
-      </div>
-      <a class="btn" href="https://drive.google.com/file/d/1bxbC0DomuxJaKfsNCpXa7Y9SGth-F-9-/view?usp=sharing" target="_blank" rel="noopener">View / Download Resume ↗</a>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <p class="eyebrow">06 / CONTACT</p>
-    <h2>Let's <span>Connect</span></h2>
-    <p class="section-intro">I'm interested in entry-level opportunities in software development, Python development, and web development.</p>
-    <div class="buttons">
-      <!-- Replace this email with your real professional email -->
-      <a class="btn" href="mailto:YOUR_EMAIL@example.com">Email Me ↗</a>
-      <a class="btn outline" href="https://github.com/sunnygogikar001" target="_blank" rel="noopener">GitHub ↗</a>
-      <a class="btn outline" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container">
-    <span>© <span id="year"></span> Sunny Gogikar</span>
-    <a href="#home">Back to top ↑</a>
-  </div>
-</footer>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
