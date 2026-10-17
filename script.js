@@ -1,95 +1,66 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Automatically display the current year in the footer.
-  const yearElement = document.getElementById("year");
-
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
+  // Automatically update the footer year.
+  const year = document.getElementById("year");
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
 
   // Mobile navigation menu.
   const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.getElementById("navLinks");
+  const navigation = document.getElementById("navigation");
 
-  if (menuToggle && navLinks) {
+  if (menuToggle && navigation) {
     menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-
+      const isOpen = navigation.classList.toggle("open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.textContent = isOpen ? "✕" : "☰";
     });
 
-    // Close the mobile menu after selecting a navigation link.
-    navLinks.querySelectorAll("a").forEach((link) => {
+    navigation.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
+        navigation.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.textContent = "☰";
       });
     });
+  }
 
-    // Close the mobile menu when switching to a desktop layout.
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 700) {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "☰";
+  // Switch between Cisco and development certifications.
+  const tabs = document.querySelectorAll(".tab");
+  const certificateGroups = document.querySelectorAll(".cert-group");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const targetId = tab.dataset.target;
+
+      tabs.forEach((item) => item.classList.remove("active"));
+      certificateGroups.forEach((group) => {
+        group.classList.remove("active");
+      });
+
+      tab.classList.add("active");
+
+      const targetGroup = document.getElementById(targetId);
+      if (targetGroup) {
+        targetGroup.classList.add("active");
       }
     });
-  }
+  });
 
-  // Reveal elements as they enter the viewport.
-  const revealElements = document.querySelectorAll(".reveal");
+  // Back-to-top button.
+  const backToTop = document.getElementById("backToTop");
 
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries, currentObserver) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            currentObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -30px 0px"
-      }
-    );
+  if (backToTop) {
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("show", window.scrollY > 400);
+    });
 
-    revealElements.forEach((element) => observer.observe(element));
-  } else {
-    revealElements.forEach((element) => element.classList.add("visible"));
-  }
-
-  // Copy the portfolio email address.
-  const copyButton = document.getElementById("copyEmail");
-  const copyMessage = document.getElementById("copyMessage");
-  const email = "sannygogikar@gmail.com";
-
-  if (copyButton && copyMessage) {
-    copyButton.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(email);
-        copyMessage.textContent = "Email address copied!";
-      } catch (error) {
-        // Fallback for browsers that block clipboard access.
-        const temporaryInput = document.createElement("textarea");
-        temporaryInput.value = email;
-        temporaryInput.setAttribute("readonly", "");
-        temporaryInput.style.position = "fixed";
-        temporaryInput.style.opacity = "0";
-
-        document.body.appendChild(temporaryInput);
-        temporaryInput.select();
-
-        const copied = document.execCommand("copy");
-        temporaryInput.remove();
-
-        copyMessage.textContent = copied
-          ? "Email address copied!"
-          : "Please copy this email: " + email;
-      }
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     });
   }
 });
