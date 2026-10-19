@@ -1,78 +1,85 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Copyright year
-  const year = document.getElementById("year");
-  if (year) year.textContent = new Date().getFullYear();
+  // Automatically update the copyright year
+  const yearElement = document.getElementById("year");
 
-  // Highlight active sidebar section
-  const navLinks = [...document.querySelectorAll(".side-nav a")];
-  const sections = navLinks
-    .map(link => document.querySelector(link.getAttribute("href")))
-    .filter(Boolean);
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  // Mobile navigation menu
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    // Close the menu after selecting a navigation link
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+  }
+
+  // Rotate the professional role in the hero section
+  const roleText = document.getElementById("roleText");
+  const roles = [
+    "Data Analyst",
+    "Software Developer",
+    "Machine Learning Enthusiast"
+  ];
+
+  if (roleText) {
+    let currentRole = 0;
+
+    setInterval(() => {
+      currentRole = (currentRole + 1) % roles.length;
+
+      roleText.style.opacity = "0";
+
+      setTimeout(() => {
+        roleText.textContent = roles[currentRole];
+        roleText.style.opacity = "1";
+      }, 200);
+    }, 2500);
+
+    roleText.style.transition = "opacity 0.2s ease";
+  }
+
+  // Reveal cards and sections as they enter the viewport
+  const revealElements = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-
-        navLinks.forEach(link => {
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === `#${entry.target.id}`
-          );
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            currentObserver.unobserve(entry.target);
+          }
         });
-      });
-    }, { rootMargin: "-20% 0px -65% 0px" });
-
-    sections.forEach(section => observer.observe(section));
-  }
-
-  // Filter certificates
-  const filterButtons = document.querySelectorAll(".filter");
-  const certificates = document.querySelectorAll(".certificate");
-
-  filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const filter = button.dataset.filter;
-
-      filterButtons.forEach(item => {
-        item.classList.toggle("active", item === button);
-      });
-
-      certificates.forEach(card => {
-        card.hidden = filter !== "all" && card.dataset.type !== filter;
-      });
-    });
-  });
-
-  // Copy email
-  const copyButton = document.getElementById("copyEmail");
-  const copyStatus = document.getElementById("copyStatus");
-
-  if (copyButton && copyStatus) {
-    copyButton.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText("sannygogikar@gmail.com");
-        copyStatus.textContent = "Email copied successfully!";
-      } catch {
-        copyStatus.textContent = "Email: sannygogikar@gmail.com";
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -25px 0px"
       }
+    );
+
+    revealElements.forEach((element) => {
+      observer.observe(element);
     });
-  }
-
-  // Back-to-top button
-  const backTop = document.getElementById("backTop");
-
-  if (backTop) {
-    const updateButton = () => {
-      backTop.classList.toggle("visible", window.scrollY > 350);
-    };
-
-    window.addEventListener("scroll", updateButton, { passive: true });
-    updateButton();
-
-    backTop.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    // Fallback for older browsers
+    revealElements.forEach((element) => {
+      element.classList.add("visible");
     });
   }
 });
